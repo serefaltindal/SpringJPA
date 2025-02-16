@@ -1,11 +1,15 @@
 package com.altindal.SpringJPA.services.impl;
 
+import java.beans.beancontext.BeanContext;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.altindal.SpringJPA.dto.StudentDTO;
+import com.altindal.SpringJPA.dto.StudentDTOUI;
 import com.altindal.SpringJPA.entitites.Student;
 import com.altindal.SpringJPA.repository.StudentRepository;
 import com.altindal.SpringJPA.services.IStudentService;
@@ -17,8 +21,14 @@ public class StudentService implements IStudentService {
 	StudentRepository studentRepository;
 
 	@Override
-	public Student saveStudent(Student student) {
-		return studentRepository.save(student);	
+	public StudentDTO saveStudent(StudentDTOUI studentDTOUI) {
+		
+		Student student=new Student();
+		BeanUtils.copyProperties(studentDTOUI, student);
+		student= studentRepository.save(student);
+		StudentDTO studentDTO=new StudentDTO();
+		BeanUtils.copyProperties(student,studentDTO);
+		return studentDTO;
 	}
 
 	@Override

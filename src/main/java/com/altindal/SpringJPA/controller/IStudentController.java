@@ -2,11 +2,13 @@ package com.altindal.SpringJPA.controller;
 
 import java.util.List;
 
+import com.altindal.SpringJPA.dto.StudentDTO;
+import com.altindal.SpringJPA.dto.StudentDTOUI;
 import com.altindal.SpringJPA.entitites.Student;
 
 public interface IStudentController {
 
-	public Student saveStudent(Student student);
+	public StudentDTO saveStudent(StudentDTOUI student);
 	
 	public List<Student> getAllStudents();
 	

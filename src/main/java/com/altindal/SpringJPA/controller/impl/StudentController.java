@@ -3,6 +3,7 @@ package com.altindal.SpringJPA.controller.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,8 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.altindal.SpringJPA.controller.IStudentController;
+import com.altindal.SpringJPA.dto.StudentDTO;
+import com.altindal.SpringJPA.dto.StudentDTOUI;
 import com.altindal.SpringJPA.entitites.Student;
 import com.altindal.SpringJPA.services.IStudentService;
+
+import jakarta.validation.Valid;
+
 
 
 @RestController
@@ -26,8 +32,8 @@ public class StudentController implements IStudentController {
 	//Genelde DTO kullanılır.
 	@PostMapping(path="/save")
 	@Override
-	public Student saveStudent(@RequestBody Student student) {
-		return studentService.saveStudent(student);
+	public StudentDTO saveStudent(@RequestBody @Valid StudentDTOUI studentDTOUI) {
+		return studentService.saveStudent(studentDTOUI);
 	}
 
 	@GetMapping(path="/list")
