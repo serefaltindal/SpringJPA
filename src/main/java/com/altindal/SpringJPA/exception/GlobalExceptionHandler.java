@@ -43,8 +43,8 @@ public class GlobalExceptionHandler {
 		return ResponseEntity.badRequest().body(createApiError(errMap));
 	}
 	
-	private APIError createApiError(Map<String, List<String>> errors) {
-		APIError apiError=new APIError();
+	private <T> APIError<T> createApiError(T errors) {
+		APIError<T> apiError=new APIError<T>();
 		apiError.setId(UUID.randomUUID().toString());
 		apiError.setErrorTimeDate(new Date());
 		apiError.setErrors(errors);		

@@ -1,14 +1,12 @@
 package com.altindal.SpringJPA.exception;
 
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
 
-public class APIError {
+public class APIError<T> {
 	
 	private String id;
 	private Date errorTimeDate;
-	private Map<String, List<String>> errors;
+	private T errors;
 	
 
 	public String getId() {
@@ -31,12 +29,12 @@ public class APIError {
 	}
 
 
-	public Map<String, List<String>> getErrors() {
+	public T getErrors() {
 		return errors;
 	}
 
 
-	public void setErrors(Map<String, List<String>> errors) {
+	public void setErrors(T errors) {
 		this.errors = errors;
 	}
 	

@@ -61,7 +61,6 @@ public class StudentService implements IStudentService {
 			dbStudent.setBirthOfDate(updateStudent.getBirthOfDate());
 			return studentRepository.save(dbStudent);
 		}
-		// TODO Auto-generated method stub
 		return null;
 	}
 
